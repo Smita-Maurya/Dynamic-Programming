@@ -1,0 +1,22 @@
+int editDistance(string s1, string s2) {
+	int m= s1.size();
+	int n = s2.size();
+
+	if(m==0 || n ==0){
+		return max(m , n);
+	}
+	//int ans ;
+
+	if(s1[0]==s2[0]){
+		return editDistance(s1.substr(1) , s2.substr(1));
+	}
+	 
+	else{
+		int a = editDistance(s1.substr(1) , s2)+1;
+		int b = editDistance(s1 , s2.substr(1))+1;
+		int c = editDistance(s1.substr(1) , s2.substr(1))+1;
+		return min(a , min(b , c));
+	}
+	 
+	
+}
