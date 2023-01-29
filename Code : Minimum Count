@@ -1,0 +1,30 @@
+int minCount(int n)
+{
+	if(n<=3){
+		return n;
+	}
+	int* ans=  new int[n+1];
+	ans[0] = 0;
+    ans[1]=1;
+	ans[2]=2;
+	ans[3]=3;
+	/*if(ans[n] !=-1){
+		return ans[n];
+	}*/
+	for(int i=4 ; i<=n ; i++){
+		ans[i] = i;
+		for(int j=1; j<= ceil(sqrt(i)) ; j++){
+			int temp = j*j;
+			if(temp>i){
+				break;
+			}
+			ans[i] =min(ans[i] , 1+ ans[i-temp]);
+		}
+	}
+	int res = ans[n];
+	delete [] ans;
+	return res;
+
+
+	 
+}
